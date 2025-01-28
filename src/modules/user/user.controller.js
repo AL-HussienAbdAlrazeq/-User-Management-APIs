@@ -89,13 +89,13 @@ export const getTopUsers = asyncHandler(async (req, res, next) => {
 
 export const getInactiveUsers = asyncHandler(async (req, res, next) => {
   const { period = "hour" || "month" } = req.query;
-  const threshold =
+  const time =
     period === "hour"
       ? new Date(Date.now() - 60 * 60 * 1000)
       : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
   const users = await userModel.findAll({
-    where: { lastLogin: { [Op.lt]: threshold } },
+    where: { lastLogin: { [Op.lt]: time } },
   });
   res.status(200).json(users);
 });
