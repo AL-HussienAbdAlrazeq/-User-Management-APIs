@@ -1,7 +1,7 @@
 import path from "node:path";
 
 import * as dotenv from "dotenv";
-dotenv.config({ path: path.resolve("./src/config/.env") });
+dotenv.config({ path: path.resolve("./.env") });
 
 import express from "express";
 import { bootstrap } from "./src/app.controller.js";
